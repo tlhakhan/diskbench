@@ -1,0 +1,13 @@
+---
+version: '3'
+services:
+  diskbench:
+    environment:
+      - JOB_RUNTIME=60
+      - JOB_CORES=1
+      - JOB_FILESIZE=128m
+    build:
+      context: ./diskbench
+    volumes:
+      - ./bench:/bench
+    entrypoint: bash /bench/start.sh
