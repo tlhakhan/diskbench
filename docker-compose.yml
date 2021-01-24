@@ -5,11 +5,13 @@ services:
     image: repo.home.local/tlhakhan/app/diskbench:latest
     environment:
       - JOB_RUNTIME=300
-      - JOB_CORES=1
-      - JOB_FILESIZE=512m
+      - JOB_CORES=4
+      - JOB_FILESIZE=1g
     volumes:
       - bench:/bench
+      - fio_tmp:/fio_tmp
     entrypoint: bash /bench/start.sh
 
 volumes:
   bench:
+  fio_tmp:
