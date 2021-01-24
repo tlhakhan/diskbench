@@ -2,12 +2,14 @@
 version: '3'
 services:
   diskbench:
+    image: repo.home.local/tlhakhan/app/diskbench:latest
     environment:
       - JOB_RUNTIME=300
       - JOB_CORES=1
       - JOB_FILESIZE=512m
-    build:
-      context: ./diskbench
     volumes:
-      - ./bench:/bench
+      - bench:/bench
     entrypoint: bash /bench/start.sh
+
+volumes:
+  bench:
